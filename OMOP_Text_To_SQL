@@ -1,0 +1,146 @@
+import os
+from openai import AzureOpenAI
+
+from langchain_openai import AzureChatOpenAI
+from langchain.retrievers import AzureCognitiveSearchRetriever
+from langchain_community.retrievers import AzureCognitiveSearchRetriever
+from langchain.schema import SystemMessage, HumanMessage
+from langchain.schema import SystemMessage, HumanMessage
+
+endpoint = os.getenv("ENDPOINT_URL", "https://myailearninghu0090068575.openai.azure.com/")
+deployment = os.getenv("DEPLOYMENT_NAME", "gpt-4o-omop-analytics")
+search_endpoint = os.getenv("SEARCH_ENDPOINT", "https://aisearchserviceforlearning.search.windows.net/")
+search_key = os.getenv("SEARCH_KEY", "oBA2nFjRVhi5wqAapbYUyxbQ2XBg1bUI8LftiLBKksAzSeBfqmuh")
+subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "399a4dd33302441dadf3408e4df3b279")
+service_name = "aisearchserviceforlearning"
+
+# Initialize Azure OpenAI client with key-based authentication
+client = AzureOpenAI(
+    azure_endpoint = endpoint,
+    api_key = subscription_key,
+    api_version = "2024-05-01-preview",
+)
+
+
+
+completion = client.chat.completions.create(
+    model=deployment,
+    messages= [
+    {
+        "role": "system",
+        "content": "You are an AI assistant that helps people find information."
+    },
+    {
+        "role": "user",
+        "content": "Can you provide list of male patients diagnosed with Lymphoma"
+    }
+   
+],
+     max_tokens=800,
+    temperature=0.7,
+    top_p=0.95,
+    frequency_penalty=0,
+    presence_penalty=0,
+    stop=None,
+    stream=False
+,
+    extra_body={
+      "data_sources": [{
+          "type": "azure_search",
+          "parameters": {
+            "filter": None,
+            "endpoint": f"{search_endpoint}",
+            "index_name": "omopindex1",
+            "semantic_configuration": "azureml-default",
+            "authentication": {
+              "type": "api_key",
+              "key": f"{search_key}"
+            },
+            "embedding_dependency": {
+              "type": "endpoint",
+              "endpoint": "https://myailearninghu0090068575.openai.azure.com/openai/deployments/text-embedding-ada-002/embeddings?api-version=2023-07-01-preview",
+              "authentication": {
+                "type": "api_key",
+                "key": "399a4dd33302441dadf3408e4df3b279"
+              }
+            },
+            "query_type": "vector_simple_hybrid",
+            "in_scope": False,
+            "role_information": "You are an AI assistant that helps people find information.",
+            "strictness": 3,
+            "top_n_documents": 5
+          }
+        }]
+    })
+
+print(completion.to_json())
+
+
+
+# Initialize the retriever
+retriever = AzureCognitiveSearchRetriever(
+    service_name=service_name,
+    api_key="oBA2nFjRVhi5wqAapbYUyxbQ2XBg1bUI8LftiLBKksAzSeBfqmuh",
+index_name="omopindex1",
+)
+	
+    
+    
+
+llm = AzureChatOpenAI(
+    azure_endpoint=endpoint,  # Use `azure_endpoint` instead of `openai_api_base`
+    openai_api_version="2024-05-01-preview",
+    deployment_name=deployment,
+    openai_api_key=subscription_key,
+    openai_api_type="azure",
+    temperature=0.7,
+    max_tokens=800,
+    top_p=0.95,
+)
+
+# Retrieve relevant documents
+query = "male patients diagnosed with Lymphoma"
+documents = retriever.get_relevant_documents(query)
+
+
+# Check if documents are retrieved
+if not documents:
+    print("No relevant documents found.")
+else:
+    # Combine the documents into context
+    context = "\n".join([doc.page_content for doc in documents])
+
+    # Prepare the messages
+    messages = [
+        SystemMessage(content="You are an AI assistant that helps people find information."),
+        HumanMessage(content=f"Based on the following documents, can you provide a list of male patients diagnosed with Lymphoma?\n\n{context}"),
+    ]
+
+    # Get the response
+    response = llm(messages)
+
+    print(response.content)
+	
+# Retrieve relevant documents
+query = "male patients diagnosed with Lymphoma"
+documents = retriever.get_relevant_documents(query)
+
+# Check if documents are retrieved
+if not documents:
+    print("No relevant documents found.")
+else:
+    # Combine the documents into context
+    context = "\n".join([doc.page_content for doc in documents])
+
+    # Prepare the messages
+    messages = [
+        SystemMessage(content="You are an AI assistant that helps people find information."),
+        HumanMessage(content=f"Based on the following documents, can you provide a list of male patients diagnosed with Lymphoma?\n\n{context}"),
+    ]
+
+    # Get the response
+    response = llm(messages)
+
+    print(response.content)
+
+
