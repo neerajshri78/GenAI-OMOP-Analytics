@@ -1,6 +1,12 @@
 # GenAI-OMOP-Analytics
 
+
+
 **Azure Open AI – Text to SQL Using Search Index -  RAG Framework**
+
+https://github.com/user-attachments/assets/a8c7fd0d-a247-4083-9762-cd19911e9c00
+
+
 
 ![image](https://github.com/user-attachments/assets/a811e7f5-3a02-449b-9405-576e9401b9cf)
 
