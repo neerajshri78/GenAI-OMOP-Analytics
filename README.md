@@ -23,4 +23,11 @@ https://github.com/user-attachments/assets/a8c7fd0d-a247-4083-9762-cd19911e9c00
 
 ![image](https://github.com/user-attachments/assets/8367d2bf-35dd-415e-8159-a103bb5d686b)
 
+**Launch AI Studio**
+![image](https://github.com/user-attachments/assets/5f63b2e4-faff-4154-939a-41739f06255c)
+
+![image](https://github.com/user-attachments/assets/f685474f-e886-47e5-8597-51b3c0f01d9c)
+
+
+
 
