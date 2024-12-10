@@ -8,7 +8,6 @@ https://github.com/user-attachments/assets/a8c7fd0d-a247-4083-9762-cd19911e9c00
 
 **Azure AI Setup**
 
-
 ![image](https://github.com/user-attachments/assets/a811e7f5-3a02-449b-9405-576e9401b9cf)
 
  ![image](https://github.com/user-attachments/assets/fd69e7d2-d323-4565-bf1e-92b4c0e1d4aa)
