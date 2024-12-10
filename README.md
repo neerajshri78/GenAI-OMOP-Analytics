@@ -62,6 +62,7 @@ If unchecked then the LLM will merely work as a glorified search and will only p
 ![image](https://github.com/user-attachments/assets/a13363f0-3700-4ad7-bf98-673af2abab3d)
 
 **Step 8 - Your NLP to SQL Gen AI Application is ready**
+
 Please make sure to provide a system message that will dictate the behaviour of the application
 For example : "You are an AI assistant that helps people find generate SQL Queries from their prompts"
 ![image](https://github.com/user-attachments/assets/82e1b914-5289-4529-a312-c7b064b511af)
