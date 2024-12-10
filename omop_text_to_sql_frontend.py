@@ -9,8 +9,8 @@ from langchain.schema import SystemMessage, HumanMessage
 endpoint = os.getenv("ENDPOINT_URL", "https://myailearninghu0090068575.openai.azure.com/")
 deployment = os.getenv("DEPLOYMENT_NAME", "gpt-4o-omop-analytics")
 search_endpoint = os.getenv("SEARCH_ENDPOINT", "https://aisearchserviceforlearning.search.windows.net/")
-search_key = os.getenv("SEARCH_KEY", "oBA2nFjRVhi5wqAapbYUyxbQ2XBg1bUI8LftiLBKksAzSeBfqmuh")
-subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "399a4dd33302441dadf3408e4df3b279")
+search_key = os.getenv("SEARCH_KEY", "YOUR SEARCH API KEY")
+subscription_key = os.getenv("AZURE_OPENAI_API_KEY", "YOUR OPEN API KEY")
 service_name = "aisearchserviceforlearning"
 
 # Initialize Azure OpenAI client with key-based authentication
