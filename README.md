@@ -8,12 +8,14 @@ Please see the screenshots from Azure AI below on how to create a search index u
 
 **Python code files**
 1. OMOP_Text_to_SQL.py - This code utilizes chat completions API from Open AI for the model hosted in Azure, search index , system message and prompt among other parameters are passed as parameters.
-2. OMOP_Text_to_SQL_frontend.py - It provides the same SQL accuracy as above code just that it utilizes langchain API and streamlit for an interface. Its meant for learning langchain and how to build UI using streamlit.
-3. OMOP_Text_to_SQL_DBInsigts.py
+2. OMOP_Text_to_SQL_frontend.py - This code provides the same SQL accuracy as above code just that it utilizes langchain API and streamlit for an interface. Its meant for learning langchain and how to build UI using streamlit.
+3. OMOP_Text_to_SQL_DBInsigts.py - This is an extension of the OMOP_Text_to_SQL_frontend.py as it automatically connects to a MySQL database like SInglestore and executes the query and provides the output in the steamlit based UI. 
 
 **OMOP (Observational Medical Outcome Partnership) Database Test data**
  https://github.com/OHDSI/EunomiaDatasets/tree/main/datasets/GiBleed
-
+ 
+**OMOP DB Table creation script**
+[OMOP_DDL_MYSQL.sql - This is the OMOP Database table screation script (](https://github.com/OHDSI/CommonDataModel/tree/v5.4.0/inst/ddl/5.4) 
 
 **Azure Open AI – Text to SQL Using Search Index -  RAG Framework**
 
