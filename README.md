@@ -1,5 +1,18 @@
 # GenAI-OMOP-Analytics
 
+**RAG Documents for Azure AI Search Index**
+1. OMOP_Table_Column_Details.docx
+2. OMOP_SQL_Queries.docx
+
+Please see the screenshots from Azure AI below on how to create a search index using this dataset.
+
+**Python code files**
+1. OMOP_Text_to_SQL.py - This code utilizes chat completions API from Open AI for the model hosted in Azure, search index , system message and prompt among other parameters are passed as parameters.
+2. OMOP_Text_to_SQL_frontend.py - It provides the same SQL accuracy as above code just that it utilizes langchain API and streamlit for an interface. Its meant for learning langchain and how to build UI using streamlit.
+3. OMOP_Text_to_SQL_DBInsigts.py
+
+**OMOP (Observational Medical Outcome Partnership) Database Test data**
+ https://github.com/OHDSI/EunomiaDatasets/tree/main/datasets/GiBleed
 
 
 **Azure Open AI – Text to SQL Using Search Index -  RAG Framework**
